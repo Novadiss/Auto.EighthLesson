@@ -1,5 +1,6 @@
 package ru.netology.banklogin.page;
 
+import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
 import ru.netology.banklogin.data.DataHelper;
 
@@ -13,10 +14,9 @@ public class LoginPage {
     private final SelenideElement loginButton = $("[data-test-id=action-login]");
     private final SelenideElement errorNotification = $("[data-test-id='error-notification'] .notification__content");
 
-    public void verifyErrorNotification(String expectedText) {
+    public void verifyErrorNotification(String expectedText){
         errorNotification.shouldHave(exactText(expectedText)).shouldBe(visible);
     }
-
     public VerificationPage validLogin(DataHelper.AuthInfo info) {
         loginField.setValue(info.getLogin());
         passwordField.setValue(info.getPassword());
